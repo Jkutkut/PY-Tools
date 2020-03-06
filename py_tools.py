@@ -68,3 +68,6 @@ def checkSol(arr):
             # pError(zone="lines", i=i, l=l);
             return False;
     return True;
+
+def sortedMatrix(m, row):
+    return sorted(m, key=lambda row: int(row[k]));
