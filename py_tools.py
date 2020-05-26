@@ -86,6 +86,26 @@ def checkSol(arr):
             return False
     return True
 
+# print the output of ArrayToString 
+def printArray(arr, *delimeter):
+    print(arrayToString(arr, *delimeter))
+
+# Given any array of any dimension, return the string format
+def arrayToString(arr, *delimeter):
+    d = delimeter if delimeter else "\n"
+    end = ""
+    s = "["
+    for subArr in arr:
+        if isinstance(subArr, list):
+            if isinstance(subArr[0], list):
+                end = "\n"
+            s = s + arrayToString(subArr, delimeter)
+        else:
+            s = s + str(subArr) # This is an element of the array
+            d = ","
+        s = s + ((d + " " if True else "") + end)
+    return s[0:-(1 + len(d))] + "]"
+
 #sort matrix by their value
 def sortedMatrix(m, row):
     return sorted(m, key=lambda row: int(row[k]))
